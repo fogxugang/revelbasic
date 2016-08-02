@@ -17,7 +17,7 @@ func Collection(s *mgo.Session) *mgo.Collection {
 }
 
 func GetCategories(s *mgo.Session) {
-return Collection(s).find({})
+return Collection(s).Find()
 }
 
 /*func GetBookByObjectId(s *mgo.Session, Id bson.ObjectId) *Book {
