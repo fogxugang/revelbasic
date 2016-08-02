@@ -5,6 +5,12 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+type Category struct {
+	Name string        `bson:"name"`
+	slug  string        `bson:"slug"`
+//	Tags  []string      `bson:"Tags"`
+}
+
 type Book struct {
 	Id    bson.ObjectId `bson:"_id,omitempty"`
 	Title string        `bson:"Title"`
@@ -17,7 +23,7 @@ func Collection(s *mgo.Session) *mgo.Collection {
 }
 
 func GetCategories(s *mgo.Session) {
-	var results []Categories
+	var results []Category
 err = Collection(s).Find(nil).All(&results)
 return err
 }
