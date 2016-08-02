@@ -10,6 +10,8 @@ GET     /                                       App.Index
 GET     /favicon.ico                            404
 
 GET /book/view/:id Book.View
+ 
+GET /categories Book.Categories
 
 # Catch all
 *       /:controller/:action                    :controller.:action

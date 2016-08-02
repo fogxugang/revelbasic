@@ -13,10 +13,14 @@ type Book struct {
 }
 
 func Collection(s *mgo.Session) *mgo.Collection {
-	return s.DB("test").C("books")
+	return s.DB("meteor").C("categories")
 }
 
-func GetBookByObjectId(s *mgo.Session, Id bson.ObjectId) *Book {
+func GetCategories(s *mgo.Session) {
+return Collection(s).find({})
+}
+
+/*func GetBookByObjectId(s *mgo.Session, Id bson.ObjectId) *Book {
 	b := new(Book)
 	Collection(s).FindId(Id).One(b)
 	return b
@@ -83,3 +87,4 @@ func GetBook(n string) *Book {
 	}
 	return b
 }
+*/

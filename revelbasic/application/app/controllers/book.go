@@ -25,11 +25,8 @@ return c.Render(book)
     //return c.Render(b)
 }
 
-func (c Book) Save(id string) revel.Result {
-    b := models.GetBookById(c.MongoSession, id)
-    if b.Id.Hex() != id {
-        return c.NotFound("Could not find a book with '%s' as id.", id)
-    }
+func (c Book) Categories() revel.Result {
+    b := models.GetCategories(c.MongoSession)
 
-    return c.Render(b)
+    return c.RenderJson(b)
 }
