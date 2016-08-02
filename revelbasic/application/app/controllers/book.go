@@ -11,6 +11,11 @@ type Book struct {
     revelbasic.MongoController
 }
 
+type Category struct {
+    *revel.Controller
+    revelbasic.MongoController
+}
+
 func (c Book) Index() revel.Result {
     return c.Render()
 }

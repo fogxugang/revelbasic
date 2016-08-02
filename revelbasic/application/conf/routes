@@ -11,7 +11,7 @@ GET     /favicon.ico                            404
 
 GET /book/view/:id Book.View
  
-GET /categories Book.Categories
+GET /book/categories Book.Categories
 
 # Catch all
 *       /:controller/:action                    :controller.:action

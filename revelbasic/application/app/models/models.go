@@ -3,11 +3,19 @@ package models
 import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
+	//"fmt"
 )
 
 type Category struct {
-	Name string        `bson:"name"`
-	slug  string        `bson:"slug"`
+	/*Id string        `bson:"_id"`
+	Slug  string     `bson:"slug"`
+	Mainicon string  `bson:"mainIcon"`
+	Greyicon  string `bson:"greyIcon"`
+	Name string      `bson:"listName"`
+	Slug  string     `bson:"slug"`*/
+	Name string      `bson:"listName"`
+	Slug string     `bson:"slug"`
+
 //	Tags  []string      `bson:"Tags"`
 }
 
@@ -19,16 +27,18 @@ type Book struct {
 }
 
 func Collection(s *mgo.Session) *mgo.Collection {
-	return s.DB("meteor").C("categories")
+	return s.DB("meteor").C("brand_categories")
 }
 
-func GetCategories(s *mgo.Session) {
+func GetCategories(s *mgo.Session) []Category {
 	var results []Category
-err = Collection(s).Find(nil).All(&results)
-return err
+	Collection(s).Find(bson.M{}).All(&results)
+	//fmt.Println(results)
+	return results
+	//return results
 }
 
-/*func GetBookByObjectId(s *mgo.Session, Id bson.ObjectId) *Book {
+func GetBookByObjectId(s *mgo.Session, Id bson.ObjectId) *Book {
 	b := new(Book)
 	Collection(s).FindId(Id).One(b)
 	return b
@@ -95,4 +105,3 @@ func GetBook(n string) *Book {
 	}
 	return b
 }
-*/
