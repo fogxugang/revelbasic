@@ -19,8 +19,21 @@ type Category struct {
 	Isactive bool 		`bson:"isActive" json:"isActive"`
 	Services []string   `json:"services"`
 	Tags []string 		`json:"tags"`	
+}
 
-//	Tags  []string      `bson:"Tags"`
+type BrandCategory struct{
+	
+}
+
+type Brand struct {
+	Id string        	`bson:"_id" json:"_id"`
+	Brandid int     	`bson:"brandId" json:"brandId"`
+	Title string    	`json:"title"`
+	Logoimg string  	`bson:"logoImg" json:"logoImg"`
+	Category []string 	`bson:"category" json:"category"`
+	Isactive bool 		`bson:"isActive" json:"isActive"`
+	Isonboarded bool 	`bson:"isOnboarded" json:"isOnboarded"`
+	Servicenumber int   `bson:"serviceNumber" json:"serviceNumber"`
 }
 
 type Book struct {
@@ -34,9 +47,21 @@ func Collection(s *mgo.Session) *mgo.Collection {
 	return s.DB("meteor").C("brand_categories")
 }
 
+func CollectionBrand(s *mgo.Session) *mgo.Collection {
+	return s.DB("meteor").C("Brands")
+}
+
 func GetCategories(s *mgo.Session) []Category {
 	var results []Category
 	Collection(s).Find(bson.M{}).All(&results)
+	//fmt.Println(results)
+	return results
+	//return results
+}
+
+func GetBrands(s *mgo.Session) []Brand {
+	var results []Brand
+	CollectionBrand(s).Find(bson.M{}).All(&results)
 	//fmt.Println(results)
 	return results
 	//return results

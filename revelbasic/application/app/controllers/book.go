@@ -32,6 +32,10 @@ return c.Render(book)
 
 func (c Book) Categories() revel.Result {
     b := models.GetCategories(c.MongoSession)
+    return c.RenderJson(b)
+}
 
+func (c Book) Brands() revel.Result {
+    b := models.GetBrands(c.MongoSession)
     return c.RenderJson(b)
 }
