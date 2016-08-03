@@ -7,14 +7,18 @@ import (
 )
 
 type Category struct {
-	/*Id string        `bson:"_id"`
-	Slug  string     `bson:"slug"`
-	Mainicon string  `bson:"mainIcon"`
-	Greyicon  string `bson:"greyIcon"`
-	Name string      `bson:"listName"`
-	Slug  string     `bson:"slug"`*/
-	Name string      `bson:"listName"`
-	Slug string     `bson:"slug"`
+	Id string        	`bson:"_id" json:"_id"`
+	Slug string     	`json:"slug"`
+	Mainicon  string    `bson:"mainIcon" json:"mainIcon"`
+	Greyicon string  	`bson:"greyIcon" json:"greyIcon"`
+	Listname string     `bson:"listName" json:"listName"`
+	Shortname string    `bson:"shortName" json:"shortName"`
+	Shortcode  string   `bson:"shortCode" json:"shortCode"`
+	Order int     		`json:"order"`
+	Brandids []int 		`bson:"brandIds" json:"brandIds"`
+	Isactive bool 		`bson:"isActive" json:"isActive"`
+	Services []string   `json:"services"`
+	Tags []string 		`json:"tags"`	
 
 //	Tags  []string      `bson:"Tags"`
 }
