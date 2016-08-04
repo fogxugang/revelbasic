@@ -30,7 +30,7 @@ type Brand struct {
 	Brandid int     	`bson:"brandId" json:"brandId"`
 	Title string    	`json:"title"`
 	Logoimg string  	`bson:"logoImg" json:"logoImg"`
-	Category []string 	`bson:"category" json:"category"`
+	Category map[string][]map[string]string 	`bson:"category" json:"category"`
 	Isactive bool 		`bson:"isActive" json:"isActive"`
 	Isonboarded bool 	`bson:"isOnboarded" json:"isOnboarded"`
 	Servicenumber int   `bson:"serviceNumber" json:"serviceNumber"`
